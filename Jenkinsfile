@@ -65,15 +65,7 @@ pipeline {
                 """
             }
         }
-        stage('Deploy') {
-            steps {
-                sh """
-                    echo "Here  I wrote shell script"        
-                    # sleep 10            
-                """
-            }     
-        }
-
+        
         stage('Publish Artifact') {
             steps {
                 nexusArtifactUploader(
@@ -85,7 +77,7 @@ pipeline {
                     repository: 'catalogue',
                     credentialsId: 'nexus-auth',
                     artifacts: [
-                        [artifactId: catalogue,
+                        [artifactId: 'catalogue',
                         classifier: '',
                         file: 'catalogue.zip',
                         type: 'zip']
@@ -96,9 +88,15 @@ pipeline {
      
         }
 
-
-
-        
+        stage('Deploy') {
+            steps {
+                sh """
+                    echo "Here  I wrote shell script"        
+                    # sleep 10            
+                """
+            }     
+        }
+       
 
     }
     // POST BUILD
