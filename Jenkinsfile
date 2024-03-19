@@ -7,6 +7,7 @@ pipeline {
 
      environment { 
         packageVersion = ''
+        nexusURL = '172.31.0.237:8081'
     }
 
     options {
@@ -70,8 +71,34 @@ pipeline {
                     echo "Here  I wrote shell script"        
                     # sleep 10            
                 """
-            }
+            }     
         }
+
+        stage('Publish Artifact') {
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: "${nexusURL}",
+                    groupId: 'com.roboshop',
+                    version: "${packageVersion}",
+                    repository: 'catalogue',
+                    credentialsId: 'nexus-auth',
+                    artifacts: [
+                        [artifactId: catalogue,
+                        classifier: '',
+                        file: 'catalogue.zip',
+                        type: 'zip']
+                    ]
+                )
+                
+            }
+     
+        }
+
+
+
+        
 
     }
     // POST BUILD
