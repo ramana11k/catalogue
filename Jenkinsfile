@@ -17,15 +17,15 @@ pipeline {
     }
 
 
-    // parameters {
+    parameters {
     
-    //         booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
+            booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
     
     // //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     // //     text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')    
     // //     choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     // //     password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    // }
+    }
    
 
    
@@ -103,22 +103,22 @@ pipeline {
      
         }
 
-        // stage('Deploy') {
+        stage('Deploy') {
             
-        //     when {
-        //         expression {
-        //             params.Deploy == 'true'
-        //         }
+            when {
+                expression {
+                    params.Deploy == 'true'
+                }
 
-        //     }
+            }
             
-        //     steps {
-        //        build job: 'catalogue-deploy', wait: true, 
-        //        parameters: [string(name: 'version', value: "${packageVersion}"), 
-        //        string(name: 'environment', value: "dev") 
-        //        ]
-        //     }     
-        // }
+            steps {
+               build job: 'catalogue-deploy', wait: true, 
+               parameters: [string(name: 'version', value: "${packageVersion}"), 
+               string(name: 'environment', value: "dev") 
+               ]
+            }     
+        }
        
 
     }
