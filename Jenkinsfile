@@ -1,11 +1,3 @@
-// #! groovy
-// @Library('roboshop-shared-library') _
-
-// // responsibility to pass what type of application and component is this to the pipeline decision
-
-// ////////////////////////////////////////
-
-
 pipeline {
     agent {
         node {
@@ -15,7 +7,7 @@ pipeline {
 
      environment { 
         packageVersion = ''
-        nexusURL = '172.31.0.237:8081'
+        nexusURL = '54.173.107.204:8081'
     }
 
     options {
