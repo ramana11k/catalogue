@@ -64,21 +64,21 @@ pipeline {
             }
         }
 
-        // stage('Unit Test') {
-        //     steps {
-        //         sh """
-        //             echo "Unit test will happen here"
-        //         """
-        //     }
-        // }
+        stage('Unit Test') {
+            steps {
+                sh """
+                    echo "Unit test will happen here"
+                """
+            }
+        }
 
-        // stage('Sonar-scan') {
-        //     steps {
-        //         sh """
-        //             sonar-scanner
-        //         """
-        //     }
-        // }
+        stage('Sonar-scan') {
+            steps {
+                sh """
+                    sonar-scanner
+                """
+            }
+        }
 
         
         stage('Publish Artifact') {
