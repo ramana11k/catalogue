@@ -1,4 +1,4 @@
-#! groovy
+#!groovy
 @Library('roboshop-shared-library') _
 
 // resposibilit to pass what type of application and component of this to the pipeline decission
@@ -8,11 +8,10 @@ def configMap = [
     component = "catalogue"
 ]
 
-if (! evn.BRANCH_NAME.equalsIgnorecase(main)){
-    pipelineDecission.decideiple(configMap)
+if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){
+    pipelineDecission.decidePipeline(configMap)
 }
-
-elso {
+else{
     echo "This is PRODUCTION, deal with CR process"
 }
 
