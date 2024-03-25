@@ -3,11 +3,16 @@
 
 // resposibilit to pass what type of application and component of this to the pipeline decission
 
-// def configMap = [
-//     application = "nodejsVM"
-//     component = "catalogue"
-// ]
+def configMap = [
+    application = "nodejsVM",
+    component = "catalogue"
+]
 
-echo "Hello world!!!!!!"
+if (! evn.BRANCH_NAME.equalsIgnorecase(main)){
+    pipelineDecission.decideiple(configMap)
+}
 
-// env
+elso {
+    echo "This is PRODUCTION, deal with CR process"
+}
+
