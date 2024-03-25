@@ -8,4 +8,6 @@ def configMap = [
     component = "catalogue"
 ]
 
+echo "Hello world!!!!!!"
+
 env
